@@ -54,6 +54,25 @@ namespace BullsAndCowsTest
         }
 
         [Theory]
+        [InlineData("1 4 2 3")]
+        public void Should_Return_True_For_Valid_Guess(string guess)
+        {
+            var checkValid = new CheckValid();
+            Assert.True(checkValid.IsValid(guess));
+        }
+
+        [Theory]
+        [InlineData("1 2 3")]
+        [InlineData("a 2 3")]
+        [InlineData("123")]
+        [InlineData("1 1 3")]
+        public void Should_Return_False_For_Valid_Guess(string guess)
+        {
+            var checkValid = new CheckValid();
+            Assert.False(checkValid.IsValid(guess));
+        }
+
+        [Theory]
         [InlineData("1 5 2 3", "1234")]
         [InlineData("7 8 6 8", "5678")]
         public void Should_create_1A2B_When_Digital_And_Position_Are_Not_all_Wrong(string guess, string secret)
