@@ -16,6 +16,7 @@ namespace BullsAndCows
 
         public string Guess(string guess)
         {
+            var guessWithoutSpace = guess.Replace(" ", string.Empty);
             return Compare(this.secret, guess);
         }
 
