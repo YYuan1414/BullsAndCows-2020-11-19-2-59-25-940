@@ -13,15 +13,14 @@ namespace BullsAndCowsRunner
             while (game.CanContinue)
             {
                 var input = Console.ReadLine();
-                if (checkValid.IsValid(input))
+                while (!checkValid.IsValid(input))
                 {
-                    var output = game.Guess(input);
-                    Console.WriteLine(output);
+                    Console.WriteLine("Wrong Input, input again");
+                    input = Console.ReadLine();
                 }
-                else
-                {
-                    continue;
-                }
+
+                var output = game.Guess(input);
+                Console.WriteLine(output);
             }
 
             Console.WriteLine("Game Over");
