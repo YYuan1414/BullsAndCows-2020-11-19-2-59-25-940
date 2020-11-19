@@ -21,6 +21,7 @@ namespace BullsAndCowsRunner
 
                 var output = game.Guess(input);
                 Console.WriteLine(output);
+                game.CountInputTimes();
             }
 
             Console.WriteLine("Game Over");

@@ -8,18 +8,24 @@ namespace BullsAndCows
     {
         private readonly SecretGenerator secretGenerator;
         private readonly string secret = string.Empty;
+        private int inputTimes = 0;
         public BullsAndCowsGame(SecretGenerator secretGenerator)
         {
             this.secretGenerator = secretGenerator;
             this.secret = this.secretGenerator.GenerateSecret();
         }
 
-        public bool CanContinue => true;
+        public bool CanContinue => inputTimes < 6;
 
         public string Guess(string guess)
         {
             var guessWithoutSpace = guess.Replace(" ", string.Empty);
             return Compare(this.secret, guessWithoutSpace);
+        }
+
+        public void CountInputTimes()
+        {
+            this.inputTimes++;
         }
 
         private string Compare(string secret, string guess)
@@ -28,6 +34,7 @@ namespace BullsAndCows
             int position = 0;
             int cows = 0;
             int bulls = 0;
+            int chanceToGuess = 0;
 
             foreach (var digital in secret)
             {
@@ -46,6 +53,7 @@ namespace BullsAndCows
             }
 
             cows = equalNumber - bulls;
+
             return bulls.ToString() + "A" + cows.ToString() + "B";
         }
     }
