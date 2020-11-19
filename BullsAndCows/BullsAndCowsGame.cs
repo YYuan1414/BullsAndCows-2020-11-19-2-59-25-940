@@ -31,6 +31,11 @@ namespace BullsAndCows
             //    }
             //}
             //for (position=0;p)
+            if (secret == guess)
+            {
+                return "4A0B";
+            }
+
             return "0A0B";
         }
     }

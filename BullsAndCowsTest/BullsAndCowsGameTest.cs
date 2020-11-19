@@ -23,6 +23,16 @@ namespace BullsAndCowsTest
 
             Assert.Equal($"0A0B", answer);
         }
+
+        [Fact]
+        public void Should_create_4A0B_When_Digital_Right_But_Position_Wrong()
+        {
+            var testSecretGenerator = new TestSecretGernerate();
+            var game = new BullsAndCowsGame(testSecretGenerator);
+            string answer = game.Guess("1234");
+
+            Assert.Equal($"4A0B", answer);
+        }
     }
 
     public class TestSecretGernerate : SecretGenerator
